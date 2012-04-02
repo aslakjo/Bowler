@@ -72,7 +72,7 @@ class BowlerServlet extends ScalatraServlet with FileUploadSupport with BowlerHt
       case e: Exception => {}
     }
 
-    val bowlerRequest = new BowlerHttpRequest(this.requestPath, this.request, this.flattenParameters(this.request, this.params, this.multiParams, files, listFiles))
+    val bowlerRequest = new BowlerHttpRequest(this.requestPath, this.request, this.flattenParameters(this.request, this.params, this.multiParams, files, listFiles), files)
     val scope = RequestScope(bowlerRequest, new BowlerHttpResponse(this.response))
     routeExecutor.executeRoute(scope)
   }

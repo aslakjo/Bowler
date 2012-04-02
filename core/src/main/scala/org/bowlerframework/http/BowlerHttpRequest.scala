@@ -5,9 +5,10 @@ import collection.mutable.MutableList
 import com.recursivity.commons.bean._
 import com.recursivity.commons.StringInputStreamReader
 import org.bowlerframework._
+import org.apache.commons.fileupload.FileItem
 
 
-class BowlerHttpRequest(path: String, val request: HttpServletRequest, params: Map[String, Any]) extends Request with StringInputStreamReader {
+class BowlerHttpRequest(path: String, val request: HttpServletRequest, params: Map[String, Any], val fileParams : scala.collection.Map[String, FileItem]) extends Request with StringInputStreamReader {
   val session = new BowlerHttpSession(request.getSession(true))
 
   private val intTransformer = new JavaIntegerTransformer
